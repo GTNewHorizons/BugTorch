@@ -123,10 +123,10 @@ public class BugTorchConfig {
         //Performance
         brokenChestsDontSplitStacks = config.getBoolean("brokenChestsDontSplitStacks", categoryPerformance, true, "Broken chests don't split apart dropped item stacks");
         fasterDroppedItemStackingChecks = config.getBoolean("fasterDroppedItemStackingChecks", categoryPerformance, true, "Dropped item nearby stack checks are faster for full stacks");
-        fasterEntityLivingBaseIsPotionActiveAndSetAir = config.getBoolean("fasterEntityLivingBaseIsPotionActiveAndSetAir", categoryPerformance, true, "isPotionActive returns faster with 0 active potions and setAir only updates it's datawatcher when needed");
+        fasterEntityLivingBaseIsPotionActiveAndSetAir = config.getBoolean("fasterEntityLivingBaseIsPotionActiveAndSetAir", categoryPerformance, false, "isPotionActive returns faster with 0 active potions and setAir only updates it's datawatcher when needed");
         fasterGetBlockByIdForAirBlocks = config.getBoolean("fasterGetBlockByIdForAirBlocks", categoryPerformance, true, "When something gets air from using its ID it will return faster");
         fasterSnowBlockTicks = config.getBoolean("fasterSnowBlockTicks", categoryPerformance, true, "Non-layered snow block ticks are faster");
-        replaceRandomWithXSTRInBlockChest = config.getBoolean("replaceRandomWithXSTRInBlockChest", categoryPerformance, true, "Makes BlockChest.class use a faster implementation of random");
+        replaceRandomWithXSTRInBlockChest = config.getBoolean("replaceRandomWithXSTRInBlockChest", categoryPerformance, false, "Makes BlockChest.class use a faster implementation of random");
         replaceRandomWithXSTRInEffectRenderer = config.getBoolean("replaceRandomWithXSTRInEffectRenderer", categoryPerformance, true, "Makes EffectRenderer.class use a faster implementation of random");
         replaceRandomWithXSTRInEntity = config.getBoolean("replaceRandomWithXSTRInEntity", categoryPerformance, true, "Makes Entity.class use a faster implementation of random");
         replaceRandomWithXSTRInMinecraftServer = config.getBoolean("replaceRandomWithXSTRInMinecraftServer", categoryPerformance, true, "Makes MinecraftServer.class use a faster implementation of random");
@@ -147,7 +147,7 @@ public class BugTorchConfig {
     public static void loadModdedMixinConfig(File configFile) {
         Configuration config = new Configuration(configFile);
 
-        fixGanysSurfaceOpenTrapdoorBackTexture = config.getBoolean("fixGanysSurfaceOpenTrapdoorBackTexture", categoryBugfixes, true, "The back of Gany's Surface trapdoors use the correct texture");
+        fixGanysSurfaceOpenTrapdoorBackTexture = config.getBoolean("fixGanysSurfaceOpenTrapdoorBackTexture", categoryBugfixes, false, "The back of Gany's Surface trapdoors use the correct texture");
 
         if(config.hasChanged()) {
             config.save();
