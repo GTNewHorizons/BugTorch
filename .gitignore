@@ -8,3 +8,7 @@ libs
 
 .project
 .classpath
+*.bat
+*.iml
+BugTorch.ipr
+BugTorch.iws
