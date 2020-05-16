@@ -2,7 +2,6 @@
 bin
 build
 eclipse
-libs
 .gradle
 .settings
 

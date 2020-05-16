@@ -37,7 +37,6 @@ configurations {
 }
 
 dependencies {
-    compile files('libs/GanysSurface-1.12.8-deobf.jar')
     compile files('libs/Thaumcraft-1.7.10-4.2.3.5-deobf.jar')
 }
 

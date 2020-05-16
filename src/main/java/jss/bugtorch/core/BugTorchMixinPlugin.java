@@ -78,7 +78,7 @@ public class BugTorchMixinPlugin implements IMixinConfigPlugin {
         if(BugTorchConfig.lanPortOverride) mixins.add("minecraft.server.integrated.MixinIntegratedServer");
 
         //Mod bugfixes
-        if(BugTorchConfig.fixGanysSurfaceOpenTrapdoorBackTexture) mixins.add("ganyssurface.blocks.MixinBlockWoodTrapdoor");
+
 
         return mixins;
     }
