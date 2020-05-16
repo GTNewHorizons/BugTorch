@@ -59,7 +59,7 @@ public class BugTorchConfig {
     public static int lanPortToUSeForOverride;
 
     //Mixin mod bugfixes
-    public static boolean fixGanysSurfaceOpenTrapdoorBackTexture;
+
 
     //Category names
     static final String categoryBackport = "backported features";
@@ -147,7 +147,7 @@ public class BugTorchConfig {
     public static void loadModdedMixinConfig(File configFile) {
         Configuration config = new Configuration(configFile);
 
-        fixGanysSurfaceOpenTrapdoorBackTexture = config.getBoolean("fixGanysSurfaceOpenTrapdoorBackTexture", categoryBugfixes, false, "The back of Gany's Surface trapdoors use the correct texture");
+
 
         if(config.hasChanged()) {
             config.save();
