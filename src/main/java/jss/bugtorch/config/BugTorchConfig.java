@@ -133,7 +133,7 @@ public class BugTorchConfig {
         replaceRandomWithXSTRInRenderItem = config.getBoolean("replaceRandomWithXSTRInRenderItem", categoryPerformance, true, "Makes RenderItem.class use a faster implementation of random");
         replaceRandomWithXSTRInWorld = config.getBoolean("replaceRandomWithXSTRInWorld", categoryPerformance, false, "!This changes world generation! Makes World.class use a faster implementation of random");
         replaceRandomWithXSTRInWorldClient = config.getBoolean("replaceRandomWithXSTRInWorldClient", categoryPerformance, true, "Makes WorldClient.class use a faster implementation of random");
-        skipInitialWorldChunkLoad = config.getBoolean("skipInitialWorldChunkLoad", categoryPerformance, true, "Speeds up initial world loading by not waiting for as many chunks to preload");
+        skipInitialWorldChunkLoad = config.getBoolean("skipInitialWorldChunkLoad", categoryPerformance, false, "Speeds up initial world loading by not waiting for as many chunks to preload");
 
         //Tweaks
         lanPortOverride = config.getBoolean("lanPortOverride", categoryTweaks, false, "Override the port used when opening singleplayer to LAN");
