@@ -93,7 +93,7 @@ public class BugTorchConfig {
         //Tweaks
         craftThaumcraftAncientStoneSlabsAndStairs = config.getBoolean("craftThaumcraftAncientStoneSlabs", categoryTweaks, true, "Craft Thaumcraft Ancient Stone slabs and stairs");
         reverseCraftThaumcraftSlabs = config.getBoolean("reverseCraftThaumcraftSlabs", categoryTweaks, true, "Craft Thaumcraft slabs back into blocks");
-        
+
         if(config.hasChanged()) {
             config.save();
         }
@@ -101,7 +101,7 @@ public class BugTorchConfig {
 
     public static void loadBaseMixinConfig(File configFile) {
         Configuration config = new Configuration(configFile);
-        
+
         //Backports
         cobwebsCanBeSheared = config.getBoolean("cobwebsCanBeSheared", categoryBackport, true, "Cobwebs can be collected with Shears without Silk Touch. From MC 1.9, fixes MC-93001");
         deadBushesDropSticks = config.getBoolean("deadBushesDropSticks", categoryBackport, true, "Dead Bushes drop 0-2 Sticks. From MC 1.9");
@@ -133,7 +133,7 @@ public class BugTorchConfig {
         replaceRandomWithXSTRInRenderItem = config.getBoolean("replaceRandomWithXSTRInRenderItem", categoryPerformance, true, "Makes RenderItem.class use a faster implementation of random");
         replaceRandomWithXSTRInWorld = config.getBoolean("replaceRandomWithXSTRInWorld", categoryPerformance, false, "!This changes world generation! Makes World.class use a faster implementation of random");
         replaceRandomWithXSTRInWorldClient = config.getBoolean("replaceRandomWithXSTRInWorldClient", categoryPerformance, true, "Makes WorldClient.class use a faster implementation of random");
-        skipInitialWorldChunkLoad = config.getBoolean("skipInitialWorldChunkLoad", categoryPerformance, false, "Speeds up initial world loading by not waiting for as many chunks to preload");
+        skipInitialWorldChunkLoad = config.getBoolean("skipInitialWorldChunkLoad", categoryPerformance, true, "Speeds up initial world loading by not waiting for as many chunks to preload");
 
         //Tweaks
         lanPortOverride = config.getBoolean("lanPortOverride", categoryTweaks, false, "Override the port used when opening singleplayer to LAN");

@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 import jss.bugtorch.config.BugTorchConfig;
+import jss.bugtorch.util.LoadedMods;
 import net.minecraft.launchwrapper.Launch;
 
 public class BugTorchMixinPlugin implements IMixinConfigPlugin {
@@ -36,8 +37,16 @@ public class BugTorchMixinPlugin implements IMixinConfigPlugin {
     public List<String> getMixins() {
         BugTorchConfig.loadBaseMixinConfig(new File(Launch.minecraftHome, "config" + File.separator + BugTorchCore.MODID + File.separator + "mixins.cfg"));
         BugTorchConfig.loadModdedMixinConfig(new File(Launch.minecraftHome, "config" + File.separator + BugTorchCore.MODID + File.separator + "mixinsModSupport.cfg"));
+        LoadedMods.detectBukkit();
+
+        if (LoadedMods.bukkitLoaded) {
+        	BugTorchCore.logger.info("Bukkit was detected, skipping some options");
+        	BugTorchConfig.skipInitialWorldChunkLoad = false;
+        	BugTorchConfig.fasterGetBlockByIdForAirBlocks = false;
+        }
+
         List<String> mixins = new ArrayList<>();
-        
+
         //Backports
         if(BugTorchConfig.cobwebsCanBeSheared)  mixins.add("minecraft.block.MixinBlockWeb");
         if(BugTorchConfig.deadBushesDropSticks) mixins.add("minecraft.block.MixinBlockDeadBush");
