@@ -71,16 +71,16 @@ public class BugTorchMixinPlugin implements IMixinConfigPlugin {
         if(BugTorchConfig.fasterEntityLivingBaseIsPotionActiveAndSetAir) mixins.add("minecraft.entity.MixinEntityLivingBase");
         if(BugTorchConfig.fasterGetBlockByIdForAirBlocks) mixins.add("minecraft.block.MixinBlock");
         if(BugTorchConfig.fasterSnowBlockTicks) mixins.add("minecraft.block.MixinBlockSnowBlock");
-        if(BugTorchConfig.replaceRandomWithXSTRInBlockChest) mixins.add("xstr.block.MixinBlockChest");
-        if(BugTorchConfig.replaceRandomWithXSTRInEffectRenderer) mixins.add("xstr.client.particle.MixinEffectRenderer");
-        if(BugTorchConfig.replaceRandomWithXSTRInEntity) mixins.add("xstr.entity.MixinEntity");
-        if(BugTorchConfig.replaceRandomWithXSTRInMinecraftServer) mixins.add("xstr.server.MixinMinecraftServer");
-        if(BugTorchConfig.replaceRandomWithXSTRInRenderItem) mixins.add("xstr.client.renderer.entity.MixinRenderItem");
-        if(BugTorchConfig.replaceRandomWithXSTRInWorld) {
-            BugTorchCore.logger.info("World.class will use XSTR in place of Random, this changes world generation slightly");
-            mixins.add("xstr.world.MixinWorld");
+        if(BugTorchConfig.replaceRandomInBlockChest) mixins.add("random.block.MixinBlockChest");
+        if(BugTorchConfig.replaceRandomInEffectRenderer) mixins.add("random.client.particle.MixinEffectRenderer");
+        if(BugTorchConfig.replaceRandomInEntity) mixins.add("random.entity.MixinEntity");
+        if(BugTorchConfig.replaceRandomInMinecraftServer) mixins.add("random.server.MixinMinecraftServer");
+        if(BugTorchConfig.replaceRandomInRenderItem) mixins.add("random.client.renderer.entity.MixinRenderItem");
+        if(BugTorchConfig.replaceRandomInWorld) {
+            BugTorchCore.logger.info("World.class will use Xoshiro256** in place of Random, this changes world generation slightly");
+            mixins.add("random.world.MixinWorld");
         }
-        if(BugTorchConfig.replaceRandomWithXSTRInWorldClient) mixins.add("xstr.client.multiplayer.MixinWorldClient");
+        if(BugTorchConfig.replaceRandomInWorldClient) mixins.add("random.client.multiplayer.MixinWorldClient");
         if(BugTorchConfig.skipInitialWorldChunkLoad) mixins.add("minecraft.server.MixinMinecraftServer");
 
         //Tweaks

@@ -45,13 +45,13 @@ public class BugTorchConfig {
     public static boolean fasterEntityLivingBaseIsPotionActiveAndSetAir;
     public static boolean fasterGetBlockByIdForAirBlocks;
     public static boolean fasterSnowBlockTicks;
-    public static boolean replaceRandomWithXSTRInBlockChest;
-    public static boolean replaceRandomWithXSTRInEffectRenderer;
-    public static boolean replaceRandomWithXSTRInEntity;
-    public static boolean replaceRandomWithXSTRInMinecraftServer;
-    public static boolean replaceRandomWithXSTRInRenderItem;
-    public static boolean replaceRandomWithXSTRInWorld;
-    public static boolean replaceRandomWithXSTRInWorldClient;
+    public static boolean replaceRandomInBlockChest;
+    public static boolean replaceRandomInEffectRenderer;
+    public static boolean replaceRandomInEntity;
+    public static boolean replaceRandomInMinecraftServer;
+    public static boolean replaceRandomInRenderItem;
+    public static boolean replaceRandomInWorld;
+    public static boolean replaceRandomInWorldClient;
     public static boolean skipInitialWorldChunkLoad;
 
     //Mixin tweaks
@@ -126,13 +126,13 @@ public class BugTorchConfig {
         fasterEntityLivingBaseIsPotionActiveAndSetAir = config.getBoolean("fasterEntityLivingBaseIsPotionActiveAndSetAir", categoryPerformance, false, "isPotionActive returns faster with 0 active potions and setAir only updates it's datawatcher when needed");
         fasterGetBlockByIdForAirBlocks = config.getBoolean("fasterGetBlockByIdForAirBlocks", categoryPerformance, true, "When something gets air from using its ID it will return faster");
         fasterSnowBlockTicks = config.getBoolean("fasterSnowBlockTicks", categoryPerformance, true, "Non-layered snow block ticks are faster");
-        replaceRandomWithXSTRInBlockChest = config.getBoolean("replaceRandomWithXSTRInBlockChest", categoryPerformance, false, "Makes BlockChest.class use a faster implementation of random");
-        replaceRandomWithXSTRInEffectRenderer = config.getBoolean("replaceRandomWithXSTRInEffectRenderer", categoryPerformance, true, "Makes EffectRenderer.class use a faster implementation of random");
-        replaceRandomWithXSTRInEntity = config.getBoolean("replaceRandomWithXSTRInEntity", categoryPerformance, true, "Makes Entity.class use a faster implementation of random");
-        replaceRandomWithXSTRInMinecraftServer = config.getBoolean("replaceRandomWithXSTRInMinecraftServer", categoryPerformance, true, "Makes MinecraftServer.class use a faster implementation of random");
-        replaceRandomWithXSTRInRenderItem = config.getBoolean("replaceRandomWithXSTRInRenderItem", categoryPerformance, true, "Makes RenderItem.class use a faster implementation of random");
-        replaceRandomWithXSTRInWorld = config.getBoolean("replaceRandomWithXSTRInWorld", categoryPerformance, false, "!This changes world generation! Makes World.class use a faster implementation of random");
-        replaceRandomWithXSTRInWorldClient = config.getBoolean("replaceRandomWithXSTRInWorldClient", categoryPerformance, true, "Makes WorldClient.class use a faster implementation of random");
+        replaceRandomInBlockChest = config.getBoolean("replaceRandomInBlockChest", categoryPerformance, false, "Makes BlockChest.class use a faster implementation of random");
+        replaceRandomInEffectRenderer = config.getBoolean("replaceRandomInEffectRenderer", categoryPerformance, true, "Makes EffectRenderer.class use a faster implementation of random");
+        replaceRandomInEntity = config.getBoolean("replaceRandomInEntity", categoryPerformance, true, "Makes Entity.class use a faster implementation of random");
+        replaceRandomInMinecraftServer = config.getBoolean("replaceRandomInMinecraftServer", categoryPerformance, true, "Makes MinecraftServer.class use a faster implementation of random");
+        replaceRandomInRenderItem = config.getBoolean("replaceRandomInRenderItem", categoryPerformance, true, "Makes RenderItem.class use a faster implementation of random");
+        replaceRandomInWorld = config.getBoolean("replaceRandomInWorld", categoryPerformance, false, "!This changes world generation! Makes World.class use a faster implementation of random");
+        replaceRandomInWorldClient = config.getBoolean("replaceRandomInWorldClient", categoryPerformance, true, "Makes WorldClient.class use a faster implementation of random");
         skipInitialWorldChunkLoad = config.getBoolean("skipInitialWorldChunkLoad", categoryPerformance, true, "Speeds up initial world loading by not waiting for as many chunks to preload");
 
         //Tweaks
