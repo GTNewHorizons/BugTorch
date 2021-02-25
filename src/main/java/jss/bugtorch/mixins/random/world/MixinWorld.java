@@ -1,7 +1,8 @@
-package jss.bugtorch.mixins.xstr.world;
+package jss.bugtorch.mixins.random.world;
 
 import java.util.Random;
 
+import jss.bugtorch.util.RandomXoshiro256StarStar;
 import org.spongepowered.asm.mixin.Mixin;
 /*
 import org.spongepowered.asm.mixin.injection.At;
@@ -9,16 +10,12 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 */
 
-import jss.bugtorch.util.XSTR;
 import net.minecraft.world.World;
 
 @Mixin(World.class)
 public class MixinWorld {
 
-    /**
-     *XSRT is faster than Random
-     */
-    public Random rand = new XSTR();
+    public Random rand = new RandomXoshiro256StarStar();
 
     /*
     @Inject(method = "<init>*", at = @At("RETURN"))
