@@ -1,14 +1,18 @@
 package jss.bugtorch.mixins.random.client.particle;
 
-import jss.bugtorch.util.RandomXoshiro256StarStar;
-import net.minecraft.client.particle.EffectRenderer;
-import org.spongepowered.asm.mixin.Mixin;
-
 import java.util.Random;
 
-@Mixin(EffectRenderer.class)
+import org.spongepowered.asm.mixin.Mixin;
+
+import jss.util.RandomXoshiro256StarStar;
+import net.minecraft.client.particle.EffectRenderer;
+
+@Mixin(value = EffectRenderer.class)
 public class MixinEffectRenderer {
 
+    /**
+     *Xoshiro256** is faster than Random
+     */
     public Random rand = new RandomXoshiro256StarStar();
 
 }

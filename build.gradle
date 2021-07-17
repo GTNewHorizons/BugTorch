@@ -18,7 +18,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'forge'
 
-version = "1.0.4"
+version = "1.1.1-GTNH"
 group = "jss.bugtorch"
 archivesBaseName = "BugTorch"
 sourceCompatibility = 1.8
@@ -37,6 +37,8 @@ configurations {
 }
 
 dependencies {
+    compileOnly files("libs/SpongeMixins-1.3.0-dev.jar")
+
     compile files('libs/Thaumcraft-1.7.10-4.2.3.5-deobf.jar')
 }
 
