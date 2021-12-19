@@ -50,6 +50,7 @@ public class BugTorchConfig {
     public static boolean fasterEntityLivingBaseIsPotionActiveAndSetAir;
     public static boolean fasterGetBlockByIdForAirBlocks;
     public static boolean fasterSnowBlockTicks;
+    public static boolean moreAccurateLayeredSnowFaceCulling;
     public static boolean replaceRandomInEffectRenderer;
     public static boolean replaceRandomInEntity;
     public static boolean replaceRandomInItem;
@@ -135,6 +136,7 @@ public class BugTorchConfig {
         fasterEntityLivingBaseIsPotionActiveAndSetAir = config.getBoolean("fasterEntityLivingBaseIsPotionActiveAndSetAir", categoryPerformance, true, "isPotionActive returns immediately if there are no active potions.\nsetAir only updates it's datawatcher when needed.");
         fasterGetBlockByIdForAirBlocks = config.getBoolean("fasterGetBlockByIdForAirBlocks", categoryPerformance, false, "When something gets air blocks from ID it will return faster." );
         fasterSnowBlockTicks = config.getBoolean("fasterSnowBlockTicks", categoryPerformance, true, "Non-layered snow block ticking is faster.");
+        moreAccurateLayeredSnowFaceCulling = config.getBoolean("moreAccurateLayeredSnowFaceCulling", categoryPerformance, true, "The faces of layered snow get culled more accurately when chunk meshes are created.");
         replaceRandomInEffectRenderer = config.getBoolean("replaceRandomInEffectRenderer", categoryPerformance, true, "Makes EffectRenderer.class use a faster implementation of random.") && !serverSide;
         replaceRandomInEntity = config.getBoolean("replaceRandomInEntity", categoryPerformance, true, "Makes Entity.class use a faster implementation of random.");
         replaceRandomInItem = config.getBoolean("replaceRandomInItem", categoryPerformance, false, "Makes Item.class use a faster implementation of random.");

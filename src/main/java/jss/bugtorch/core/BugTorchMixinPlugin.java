@@ -70,6 +70,7 @@ public class BugTorchMixinPlugin implements IMixinConfigPlugin {
         if(BugTorchConfig.fasterEntityLivingBaseIsPotionActiveAndSetAir) mixins.add("minecraft.entity.MixinEntityLivingBase");
         if(BugTorchConfig.fasterGetBlockByIdForAirBlocks) mixins.add("minecraft.block.MixinBlock");
         if(BugTorchConfig.fasterSnowBlockTicks) mixins.add("minecraft.block.MixinBlockSnowBlock");
+        if(BugTorchConfig.moreAccurateLayeredSnowFaceCulling) mixins.add("minecraft.block.MixinBlockSnow");
         if(BugTorchConfig.replaceRandomInEffectRenderer) mixins.add("random.client.particle.MixinEffectRenderer");
         if(BugTorchConfig.replaceRandomInEntity) mixins.add("random.entity.MixinEntity");
         if(BugTorchConfig.replaceRandomInItem) mixins.add("random.item.MixinItem");
