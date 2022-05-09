@@ -1,3 +1,4 @@
 dependencies {
     compile "com.azanor:Thaumcraft:1.7.10-4.2.3.5:deobf"
+    runtime "com.azanor.baubles:Baubles:1.0.1.10:deobf"
 }
