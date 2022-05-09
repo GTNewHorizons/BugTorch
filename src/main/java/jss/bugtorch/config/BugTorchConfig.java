@@ -106,7 +106,8 @@ public class BugTorchConfig {
     }
 
     public static void loadBaseMixinConfig(File configFile) {
-        boolean serverSide = FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER;
+        // Adapted from FMLCommonHandler
+        boolean serverSide = Thread.currentThread().getName().equals("Server thread");
         
         Configuration config = new Configuration(configFile);
 
