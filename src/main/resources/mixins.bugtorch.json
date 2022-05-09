@@ -5,5 +5,8 @@
   "plugin": "jss.bugtorch.core.BugTorchMixinPlugin",
   "refmap": "mixins.bugtorch.refmap.json",
   "target": "@env(DEFAULT)",
-  "compatibilityLevel": "JAVA_8"
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [],
+  "client": [],
+  "server": []
 }

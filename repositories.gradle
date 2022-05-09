@@ -1,0 +1,6 @@
+repositories {
+    maven {
+        name 'MMD maven'
+        url 'https://maven.mcmoddev.com/'
+    }
+}
