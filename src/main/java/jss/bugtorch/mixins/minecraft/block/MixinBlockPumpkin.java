@@ -3,7 +3,6 @@ package jss.bugtorch.mixins.minecraft.block;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.BlockPumpkin;
 import net.minecraft.block.material.Material;

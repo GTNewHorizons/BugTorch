@@ -5,7 +5,6 @@ import jss.bugtorch.config.BugTorchConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigBlocks;
 
 public class ThaumcraftSupport {

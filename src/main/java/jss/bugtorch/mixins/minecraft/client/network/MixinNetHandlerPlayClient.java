@@ -9,7 +9,6 @@ import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.network.play.server.S33PacketUpdateSign;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySign;
-import net.minecraft.util.ChatComponentText;
 
 @Mixin(value = NetHandlerPlayClient.class)
 public class MixinNetHandlerPlayClient {

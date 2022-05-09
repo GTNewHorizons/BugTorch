@@ -40,6 +40,10 @@ public class MixinBlockLeaves extends BlockLeavesBase {
         }
     }
     
+    /**
+     * @author jss2a98aj
+     * @reason Prevents duplicate drops when shearing
+     */
     @Overwrite()
     public void updateTick(World world, int x, int y, int z, Random random) {
         if (!world.isRemote) {

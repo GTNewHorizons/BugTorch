@@ -19,6 +19,7 @@ public abstract class MixinEntityLivingBase extends Entity {
         super(world);
     }
 
+    @SuppressWarnings("rawtypes")
     @Shadow
     @Final
     private HashMap activePotionsMap;

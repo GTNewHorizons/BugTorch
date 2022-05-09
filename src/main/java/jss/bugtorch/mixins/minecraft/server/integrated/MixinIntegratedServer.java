@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Proxy;
 
-import org.apache.logging.log4j.Logger;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -15,7 +13,6 @@ import jss.bugtorch.config.BugTorchConfig;
 import net.minecraft.client.multiplayer.ThreadLanServerPing;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.integrated.IntegratedServer;
-import net.minecraft.util.HttpUtil;
 import net.minecraft.world.WorldSettings;
 
 @Mixin(value = IntegratedServer.class)

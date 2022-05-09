@@ -2,9 +2,6 @@ package jss.bugtorch.config;
 
 import java.io.File;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.config.Configuration;
 
 public class BugTorchConfig {

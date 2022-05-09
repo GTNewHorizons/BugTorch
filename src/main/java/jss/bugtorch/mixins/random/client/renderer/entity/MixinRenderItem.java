@@ -13,6 +13,7 @@ public class MixinRenderItem {
     /**
      *Xoshiro256** is faster than Random
      */
+    @SuppressWarnings("unused")
     private Random random = new RandomXoshiro256StarStar();
 
 }

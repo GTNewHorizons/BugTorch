@@ -3,9 +3,7 @@ package jss.bugtorch.mixins.minecraft.block;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockSilverfish;
-import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.world.World;
 
 @Mixin(value = BlockSilverfish.class)
