@@ -1,4 +1,14 @@
 dependencies {
     compile "com.azanor:Thaumcraft:1.7.10-4.2.3.5:deobf"
     runtime "com.azanor.baubles:Baubles:1.0.1.10:deobf"
+	
+	compile(deobf('https://media.forgecdn.net/files/2234/410/witchery-1.7.10-0.24.1.jar'))
+    compile(deobf('https://media.forgecdn.net/files/2284/819/Ganys+Surface-1.12.8.jar'))
+	compile(deobf('https://media.forgecdn.net/files/2273/362/gilded-games-util-1.7.10-1.9.jar'))
+	compile(deobf('https://media.forgecdn.net/files/2273/367/aether-1.7.10-1.6.jar'))
+	
+
+	
+	
+
 }
