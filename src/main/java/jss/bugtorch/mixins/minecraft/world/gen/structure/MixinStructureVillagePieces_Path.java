@@ -21,10 +21,10 @@ public abstract class MixinStructureVillagePieces_Path extends StructureVillageP
 	 */
 	@Overwrite()
 	public boolean addComponentParts(World world, Random random, StructureBoundingBox boundingBox) {
-		Block block = func_151558_b(Blocks.gravel, 0);
+		Block block = this.func_151558_b(Blocks.gravel, 0);
 
-		for (int x = boundingBox.minX; x <= boundingBox.maxX; ++x) {
-			for (int z = boundingBox.minZ; z <= boundingBox.maxZ; ++z) {
+		for (int x = this.boundingBox.minX; x <= this.boundingBox.maxX; ++x) {
+			for (int z = this.boundingBox.minZ; z <= this.boundingBox.maxZ; ++z) {
 				if (boundingBox.isVecInside(x, 64, z)) {
 					int y = world.getTopSolidOrLiquidBlock(x, z) - 1;
 					world.setBlock(x, y, z, block, 0, 2);
