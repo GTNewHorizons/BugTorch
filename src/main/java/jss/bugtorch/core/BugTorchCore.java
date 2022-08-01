@@ -14,11 +14,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(
-		modid = BugTorchCore.MODID,
-		name = BugTorchCore.NAME,
-		version = "GRADLETOKEN_VERSION",
-		dependencies = "required-after:spongemixins@[1.3.0,);after:Thaumcraft;after:temperateplants;after:VillageNames;after:witchery;"
-	)
+        modid = BugTorchCore.MODID,
+        name = BugTorchCore.NAME,
+        version = "GRADLETOKEN_VERSION",
+        dependencies =
+                "required-after:spongemixins@[1.3.0,);after:Thaumcraft;after:temperateplants;after:VillageNames;after:witchery;")
 public class BugTorchCore {
 
     public static final String MODID = "bugtorch";
