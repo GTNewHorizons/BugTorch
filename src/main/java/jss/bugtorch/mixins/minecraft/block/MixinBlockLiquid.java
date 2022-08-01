@@ -1,31 +1,42 @@
 package jss.bugtorch.mixins.minecraft.block;
 
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(value = BlockLiquid.class)
 public abstract class MixinBlockLiquid {
 
-	/**
-	 * @author jss2a98aj
-	 * @reason Lava should only hiss when mixing with water
-	 */
-	@Overwrite()
-	protected void func_149799_m(World worldIn, int x, int y, int z) {
-		Block block = worldIn.getBlock(x, y, z);
-		if (block == Blocks.cobblestone | block == Blocks.obsidian | block == Blocks.stone) {
-			worldIn.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), "random.fizz", 0.5F, 2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
-			for (int l = 0; l < 8; ++l) {
-				worldIn.spawnParticle("largesmoke", (double)x + Math.random(), (double)y + 1.2D, (double)z + Math.random(), 0.0D, 0.0D, 0.0D);
-			}
-		}
-	}
-
+    /**
+     * @author jss2a98aj
+     * @reason Lava should only hiss when mixing with water
+     */
+    @Overwrite()
+    protected void func_149799_m(World worldIn, int x, int y, int z) {
+        Block block = worldIn.getBlock(x, y, z);
+        if (block == Blocks.cobblestone | block == Blocks.obsidian | block == Blocks.stone) {
+            worldIn.playSoundEffect(
+                    (double) ((float) x + 0.5F),
+                    (double) ((float) y + 0.5F),
+                    (double) ((float) z + 0.5F),
+                    "random.fizz",
+                    0.5F,
+                    2.6F + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8F);
+            for (int l = 0; l < 8; ++l) {
+                worldIn.spawnParticle(
+                        "largesmoke",
+                        (double) x + Math.random(),
+                        (double) y + 1.2D,
+                        (double) z + Math.random(),
+                        0.0D,
+                        0.0D,
+                        0.0D);
+            }
+        }
+    }
 }
 
 // I would like to do this instead, but the mixin fails to apply?
@@ -40,7 +51,7 @@ public class MixinBlockLiquid extends Block {
 	@Shadow
 	protected void func_149799_m(World worldIn, int x, int y, int z) {
 	}
-	
+
 	@Overwrite()
 	private void func_149805_n(World worldIn, int x, int y, int z) {
 		if (worldIn.getBlock(x, y, z) == this) {
