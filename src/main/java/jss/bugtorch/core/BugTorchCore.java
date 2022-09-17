@@ -52,5 +52,7 @@ public class BugTorchCore {
         if (LoadedMods.villageNamesLoaded) {
             VillageNamesSupport.enableSupport();
         }
+
+
     }
 }

@@ -4,5 +4,40 @@
     "sounds": [
       "mob/ghast/fireball4"
     ]
-  }
+  },
+  "mob.squid.say":{
+      "category":"neutral",
+      "sounds":[
+         "mob/squid/idle1",
+         "mob/squid/idle2",
+         "mob/squid/idle3",
+         "mob/squid/idle4",
+         "mob/squid/idle5"
+      ]
+   },
+   "mob.squid.hurt":{
+      "category":"neutral",
+      "sounds":[
+         "mob/squid/hurt1",
+         "mob/squid/hurt2",
+         "mob/squid/hurt3",
+         "mob/squid/hurt4"
+      ]
+   },
+   "mob.squid.death":{
+      "category":"neutral",
+      "sounds":[
+         "mob/squid/death1",
+         "mob/squid/death2",
+         "mob/squid/death3"
+      ]
+   },
+   "mob.squid.shoot":{
+      "category":"neutral",
+      "sounds":[
+         "mob/squid/shoot1",
+         "mob/squid/shoot2",
+         "mob/squid/shoot3"
+      ]
+   }
 }
