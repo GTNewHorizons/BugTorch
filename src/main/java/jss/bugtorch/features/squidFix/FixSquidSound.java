@@ -104,7 +104,7 @@ public class FixSquidSound {
                StaticUtils.playSoundAtEntityRng("mob.squid.shoot", sq);
 
                if(target.isInWater()){
-                   addBlindnessEffect(target,w.rand.nextInt(100)+20);
+                   addBlindnessEffect(target,w.rand.nextInt(300)+20);
                }
 
 
