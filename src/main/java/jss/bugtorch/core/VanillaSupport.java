@@ -31,13 +31,9 @@ public class VanillaSupport {
             Blocks.torch.setTickRandomly(false);
         }
 
-
-        //Squids
-        if(BugTorchConfig.fixSquidsSounds){
+        // Squids
+        if (BugTorchConfig.fixSquidsSounds) {
             MinecraftForge.EVENT_BUS.register(new FixSquidSound());
         }
-
-
-
     }
 }

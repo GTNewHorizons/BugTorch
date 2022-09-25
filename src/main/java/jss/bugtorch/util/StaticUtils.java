@@ -1,5 +1,7 @@
 package jss.bugtorch.util;
 
+import java.util.List;
+import java.util.Random;
 import jss.bugtorch.core.BugTorchCore;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,33 +10,24 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
-import java.util.List;
-import java.util.Random;
-
 public class StaticUtils {
-
 
     public static boolean getRandom(Entity e, double chanceMul) {
         return ((e.worldObj.rand.nextDouble() * 100d) < chanceMul);
-
     }
 
+    public static <T> List<T> getEntitiesAround(Vec3 centr, int boxSize, World w, Class type) {
 
-    public static  <T> List<T> getEntitiesAround(Vec3 centr , int boxSize , World w, Class type){
-
-        //Make some CUBE
-        int half = boxSize/2;
+        // Make some CUBE
+        int half = boxSize / 2;
         AxisAlignedBB box = AxisAlignedBB.getBoundingBox(0, 0, 0, boxSize, boxSize, boxSize);
-        //Centre box
-        box.offset(-half,-half,-half);
-        //Offset to cords
-        box.offset(centr.xCoord,centr.yCoord,centr.zCoord);
+        // Centre box
+        box.offset(-half, -half, -half);
+        // Offset to cords
+        box.offset(centr.xCoord, centr.yCoord, centr.zCoord);
 
-        return  w.getEntitiesWithinAABB(type, box);
+        return w.getEntitiesWithinAABB(type, box);
     }
-
-
-
 
     public static Vec3 findBBCCenter(Entity e) {
 
@@ -51,28 +44,22 @@ public class StaticUtils {
         return (p1 - p2) / 2;
     }
 
-
     public static void playSoundAtEntityRng(String soundName, EntityLivingBase e) {
 
-       if(soundName==null || e == null){
-           return;
-       }
+        if (soundName == null || e == null) {
+            return;
+        }
 
         Random r = e.worldObj.rand;
-        float v =  e.isChild() ?  1.5F : + 1.0F;
+        float v = e.isChild() ? 1.5F : +1.0F;
         float pitch = (r.nextFloat() - r.nextFloat()) * 0.2F + v;
 
-        e.worldObj.playSoundAtEntity(e , BugTorchCore.MODID + ":" + soundName, 0.4F, pitch);
-
+        e.worldObj.playSoundAtEntity(e, BugTorchCore.MODID + ":" + soundName, 0.4F, pitch);
     }
-
-
 
     public static void addParticles(String name, World w, Vec3 pos, int count, float power) {
         if (w instanceof WorldServer) {
             ((WorldServer) w).func_147487_a(name, pos.xCoord, pos.yCoord, pos.zCoord, count, 0, 0, 0, power);
         }
-
     }
-
 }

@@ -133,10 +133,7 @@ public class BugTorchConfig {
         fixTorchBlocksRandomlyTicking = config.getBoolean(
                 "fixTorchBlocksRandomlyTicking", categoryBugfixes, true, "Torch blocks will no longer randomly tick.");
 
-        fixSquidsSounds = config.getBoolean(
-                "fixSquidsSounds", categoryBugfixes, true, "Squids will make sounds");
-
-
+        fixSquidsSounds = config.getBoolean("fixSquidsSounds", categoryBugfixes, true, "Squids will make sounds");
 
         if (config.hasChanged()) {
             config.save();
