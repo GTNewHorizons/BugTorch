@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Logger;
         name = BugTorchCore.NAME,
         version = "GRADLETOKEN_VERSION",
         dependencies =
-                "required-after:spongemixins@[1.3.0,);after:Thaumcraft;after:temperateplants;after:VillageNames;after:witchery;")
+                "required-after:gtnhmixins@[2.0.1,);after:Thaumcraft;after:temperateplants;after:VillageNames;after:witchery;")
 public class BugTorchCore {
 
     public static final String MODID = "bugtorch";
