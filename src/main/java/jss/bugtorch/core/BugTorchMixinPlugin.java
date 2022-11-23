@@ -18,6 +18,8 @@ public class BugTorchMixinPlugin implements IMixinConfigPlugin {
         String configFolder = "config" + File.separator + BugTorchCore.MODID + File.separator;
         BugTorchConfig.loadBaseMixinConfig(new File(Launch.minecraftHome, configFolder + "mixins.cfg"));
         BugTorchConfig.loadModdedMixinConfig(new File(Launch.minecraftHome, configFolder + "mixinsModSupport.cfg"));
+        BugTorchConfig.loadBaseConfig(new File(Launch.minecraftHome, configFolder + "base.cfg"));
+        BugTorchConfig.loadModdedConfig(new File(Launch.minecraftHome, configFolder + "modSupport.cfg"));
     }
 
     @Override

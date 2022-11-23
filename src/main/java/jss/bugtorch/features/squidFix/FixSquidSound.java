@@ -18,10 +18,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class FixSquidSound {
 
-    boolean isPass(LivingEvent event) {
-        return !event.entity.worldObj.isRemote && EntitySquid.class.equals(event.entity.getClass());
-    }
-
     @SubscribeEvent
     public void onSquidLive(LivingUpdateEvent event) {
         if (isPass(event)) {
@@ -40,7 +36,7 @@ public class FixSquidSound {
 
             if (sq.livingSoundTime == 0 && sq.isInWater()) {
                 if (StaticUtils.getRandom(sq, 5)) {
-                    StaticUtils.playSoundAtEntityRng("mob.squid.say", sq);
+                    StaticUtils.playSoundAtEntityRng("entity.squid.say", sq);
                 }
             }
         }
@@ -50,7 +46,7 @@ public class FixSquidSound {
     public void onSquidDeath(LivingDeathEvent event) {
         if (isPass(event)) {
             EntitySquid sq = (EntitySquid) event.entityLiving;
-            StaticUtils.playSoundAtEntityRng("mob.squid.death", sq);
+            StaticUtils.playSoundAtEntityRng("entity.squid.death", sq);
         }
     }
 
@@ -58,14 +54,18 @@ public class FixSquidSound {
     public void onSquidHurt(LivingHurtEvent event) {
         if (isPass(event)) {
             EntitySquid sq = (EntitySquid) event.entityLiving;
-            StaticUtils.playSoundAtEntityRng("mob.squid.hurt", sq);
+            StaticUtils.playSoundAtEntityRng("entity.squid.hurt", sq);
             if (StaticUtils.getRandom(sq, 15)) {
                 doInk(sq);
             }
         }
     }
 
-    public void doInk(EntitySquid sq) {
+    private boolean isPass(LivingEvent event) {
+        return !event.entity.worldObj.isRemote && EntitySquid.class.equals(event.entity.getClass());
+    }
+
+    private void doInk(EntitySquid sq) {
 
         World w = sq.worldObj;
 
@@ -86,7 +86,7 @@ public class FixSquidSound {
             if (target != null && target != sq) {
 
                 StaticUtils.addParticles("largesmoke", serverWorld, boxC, 5, 0.08f);
-                StaticUtils.playSoundAtEntityRng("mob.squid.shoot", sq);
+                StaticUtils.playSoundAtEntityRng("entity.squid.shoot", sq);
 
                 if (target.isInWater()) {
                     addBlindnessEffect(target, w.rand.nextInt(300) + 20);
@@ -95,7 +95,7 @@ public class FixSquidSound {
         }
     }
 
-    void addBlindnessEffect(EntityLivingBase e, int duration) {
+    private void addBlindnessEffect(EntityLivingBase e, int duration) {
 
         if (e == null || duration == 0) {
             return;

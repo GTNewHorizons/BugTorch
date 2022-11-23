@@ -1,14 +1,15 @@
 package jss.bugtorch.core;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLConstructionEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import java.io.File;
-import jss.bugtorch.config.BugTorchConfig;
 import jss.bugtorch.modsupport.PamsTemperatePlantsSupport;
 import jss.bugtorch.modsupport.ThaumcraftSupport;
 import jss.bugtorch.modsupport.VillageNamesSupport;
 import jss.bugtorch.modsupport.WitcherySupport;
+import jss.bugtorch.util.AssetLoader;
 import jss.bugtorch.util.LoadedMods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,7 +19,7 @@ import org.apache.logging.log4j.Logger;
         name = BugTorchCore.NAME,
         version = "GRADLETOKEN_VERSION",
         dependencies =
-                "required-after:gtnhmixins@[2.0.1,);after:Thaumcraft;after:temperateplants;after:VillageNames;after:witchery;")
+                "required-after:gtnhmixins@[2.0.1,);after:Thaumcraft;after:temperateplants;after:VillageNames;after:witchery")
 public class BugTorchCore {
 
     public static final String MODID = "bugtorch";
@@ -27,12 +28,14 @@ public class BugTorchCore {
     public static final Logger logger = LogManager.getLogger(MODID);
 
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        String configFolder =
-                event.getModConfigurationDirectory().getAbsolutePath() + File.separator + MODID + File.separator;
-        BugTorchConfig.loadBaseConfig(new File(configFolder + "base.cfg"));
-        BugTorchConfig.loadModdedConfig(new File(configFolder + "modSupport.cfg"));
+    public void construct(FMLConstructionEvent event) {
+        if (LoadedMods.txLoaderPresent && FMLCommonHandler.instance().getSide().isClient()) {
+            AssetLoader.load();
+        }
+    }
 
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event) {
         LoadedMods.detectLoadedMods();
 
         VanillaSupport.enableSupport();
