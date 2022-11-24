@@ -1,8 +1,11 @@
 package jss.bugtorch.core;
 
 import jss.bugtorch.config.BugTorchConfig;
+import jss.bugtorch.features.squidFix.FixSquidSound;
+import jss.bugtorch.util.LoadedMods;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.init.Blocks;
+import net.minecraftforge.common.MinecraftForge;
 
 public class VanillaSupport {
 
@@ -27,6 +30,11 @@ public class VanillaSupport {
 
         if (BugTorchConfig.fixTorchBlocksRandomlyTicking) {
             Blocks.torch.setTickRandomly(false);
+        }
+
+        // Squids
+        if (BugTorchConfig.fixSquidsSounds && LoadedMods.txLoaderPresent) {
+            MinecraftForge.EVENT_BUS.register(new FixSquidSound());
         }
     }
 }
