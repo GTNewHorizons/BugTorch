@@ -18,4 +18,6 @@ dependencies {
     compile deobfCurse("pams-temperate-plants-221916:2206430")
     compile deobfCurse("village-names-259230:4328516")
     compile deobfCurse("llibrary-243298:2319767")
+
+    compileOnly('com.github.GTNewHorizons:TX-Loader:1.1:dev')
 }

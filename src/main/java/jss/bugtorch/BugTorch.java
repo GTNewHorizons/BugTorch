@@ -2,9 +2,12 @@ package jss.bugtorch;
 
 import java.io.File;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.event.FMLConstructionEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import jss.bugtorch.modsupport.VanillaSupport;
+import jss.bugtorch.util.AssetLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -30,6 +33,19 @@ public class BugTorch {
 	public static final String VERSION = "GRADLETOKEN_VERSION";
 	public static final Logger logger = LogManager.getLogger(NAME);
 
+	@Mod.EventHandler
+	public void construct(FMLConstructionEvent event) {
+		if(!FMLCommonHandler.instance().getSide().isClient()) return;
+
+		try {
+			Class.forName("glowredman.txloader.TXLoaderCore");
+			BugTorchConfig.txLoaderPresent = true;
+			AssetLoader.load();
+		} catch (Exception ignored) {
+			BugTorchConfig.txLoaderPresent = false;
+		}
+	}
+	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		String configFolder =  event.getModConfigurationDirectory().getAbsolutePath() + File.separator + MODID + File.separator;
