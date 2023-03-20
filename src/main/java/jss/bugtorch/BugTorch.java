@@ -6,6 +6,10 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLConstructionEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.relauncher.Side;
+import jss.bugtorch.listeners.BroadcastSettingsRemover;
+import jss.bugtorch.modsupport.*;
+import net.minecraftforge.common.MinecraftForge;
 import jss.bugtorch.modsupport.VanillaSupport;
 import jss.bugtorch.util.AssetLoader;
 import org.apache.logging.log4j.LogManager;
@@ -14,10 +18,6 @@ import org.apache.logging.log4j.Logger;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import jss.bugtorch.config.BugTorchConfig;
-import jss.bugtorch.modsupport.PamsTemperatePlantsSupport;
-import jss.bugtorch.modsupport.ThaumcraftSupport;
-import jss.bugtorch.modsupport.VillageNamesSupport;
-import jss.bugtorch.modsupport.WitcherySupport;
 
 @Mod(
 		modid = BugTorch.MODID,
@@ -61,6 +61,10 @@ public class BugTorch {
 
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+		if(Loader.isModLoaded("ExtraUtilities")) {
+			ExtraUtilitiesSupport.enableSupport();
+		}
+
 		if(Loader.isModLoaded("temperateplants")) {
 			PamsTemperatePlantsSupport.enableSupport();
 		}

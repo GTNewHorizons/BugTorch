@@ -22,6 +22,7 @@ public class BugTorchConfig {
 	//Base tweaks
 	public static boolean removeBroadcastSettingsButton;
 	//Mod bugfixes
+	public static boolean fixExtraUtilitiesBlockSounds;
 	public static boolean fixPamsTemperatePlantsBlockSounds;
 	public static boolean fixWitcheryBlockSounds;
 
@@ -151,6 +152,7 @@ public class BugTorchConfig {
 		Configuration config = new Configuration(configFile);
 
 		//Bugfixes
+		fixExtraUtilitiesBlockSounds = config.getBoolean("fixExtraUtilitiesBlockSounds", categoryBugfixes, true, "Assigns the correct sound type to blocks from Extra Utilities.");
 		fixPamsTemperatePlantsBlockSounds = config.getBoolean("fixPamsTemperatePlantsBlockSounds", categoryBugfixes, true, "Assigns the correct sound type to blocks from Pam's Temperate Plants.");
 		fixWitcheryBlockSounds = config.getBoolean("fixWitcheryBlockSounds", categoryBugfixes, true, "Assigns the correct sound type to blocks from Witchery.");
 
