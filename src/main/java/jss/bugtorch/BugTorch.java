@@ -4,11 +4,14 @@ import java.io.File;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.event.FMLConstructionEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import jss.bugtorch.listeners.BroadcastSettingsRemover;
 import jss.bugtorch.modsupport.*;
 import net.minecraftforge.common.MinecraftForge;
+import jss.bugtorch.modsupport.VanillaSupport;
+import jss.bugtorch.util.AssetLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,8 +34,21 @@ public class BugTorch {
 	public static final Logger logger = LogManager.getLogger(NAME);
 
 	@Mod.EventHandler
+	public void construct(FMLConstructionEvent event) {
+		if(!FMLCommonHandler.instance().getSide().isClient()) return;
+
+		try {
+			Class.forName("glowredman.txloader.TXLoaderCore");
+			BugTorchConfig.txLoaderPresent = true;
+			AssetLoader.load();
+		} catch (Exception ignored) {
+			BugTorchConfig.txLoaderPresent = false;
+		}
+	}
+	
+	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		String configFolder =  event.getModConfigurationDirectory().getAbsolutePath() + File.separator + MODID + File.separator;
+		String configFolder = event.getModConfigurationDirectory().getAbsolutePath() + File.separator + MODID + File.separator;
 		BugTorchConfig.loadBaseConfig(new File(configFolder + "base.cfg"));
 		BugTorchConfig.loadModdedConfig(new File(configFolder + "modSupport.cfg"));
 

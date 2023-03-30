@@ -15,9 +15,12 @@ public class BugTorchConfig {
 	public static boolean fixSnowBlocksRandomlyTicking;
 	public static boolean fixTorchBlocksRandomlyTicking;
 
+    // Base features
+    public static boolean addSquidsSounds;
+	public static boolean txLoaderPresent;
+
 	//Base tweaks
 	public static boolean removeBroadcastSettingsButton;
-
 	//Mod bugfixes
 	public static boolean fixExtraUtilitiesBlockSounds;
 	public static boolean fixPamsTemperatePlantsBlockSounds;
@@ -140,6 +143,8 @@ public class BugTorchConfig {
 
 		removeBroadcastSettingsButton = config.getBoolean("removeBroadcastSettingsButton", categoryTweaks, false, "Remove the Broadcast Settings button from the options menu.");
 
+		addSquidsSounds = config.getBoolean("fixSquidsSounds", categoryBugfixes, true, "Squids will make sounds (requires TX Loader)");
+        
 		if(config.hasChanged()) {
 			config.save();
 		}
