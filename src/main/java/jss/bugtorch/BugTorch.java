@@ -48,17 +48,18 @@ public class BugTorch {
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		String configFolder =  event.getModConfigurationDirectory().getAbsolutePath() + File.separator + MODID + File.separator;
+		String configFolder = event.getModConfigurationDirectory().getAbsolutePath() + File.separator + MODID + File.separator;
 		BugTorchConfig.loadBaseConfig(new File(configFolder + "base.cfg"));
 		BugTorchConfig.loadModdedConfig(new File(configFolder + "modSupport.cfg"));
 
 		VanillaSupport.enableSupport();
-		if(event.getSide() == Side.CLIENT) {
-			if(BugTorchConfig.removeBroadcastSettingsButton) {
+		if (event.getSide() == Side.CLIENT) {
+			if (BugTorchConfig.removeBroadcastSettingsButton) {
 				FMLCommonHandler.instance().bus().register(BroadcastSettingsRemover.INSTANCE);
 				MinecraftForge.EVENT_BUS.register(BroadcastSettingsRemover.INSTANCE);
+			}
+		}
 	}
-
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		if(Loader.isModLoaded("ExtraUtilities")) {
