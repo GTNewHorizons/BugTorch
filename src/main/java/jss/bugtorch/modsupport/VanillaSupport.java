@@ -2,6 +2,7 @@ package jss.bugtorch.modsupport;
 
 import jss.bugtorch.config.BugTorchConfig;
 import jss.bugtorch.features.squidFix.FixSquidSound;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
