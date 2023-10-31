@@ -29,5 +29,5 @@ dependencies {
     compileOnly deobfCurse("pams-temperate-plants-221916:2206430")
     compileOnly deobfCurse("llibrary-243298:2319767")
     compileOnly deobfCurse("mrcrayfish-furniture-mod-55438:2221679")
-    compileOnly('com.github.GTNewHorizons:TX-Loader:1.1:dev')
+    compileOnly('com.github.GTNewHorizons:TX-Loader:1.5.3:dev')
 }
