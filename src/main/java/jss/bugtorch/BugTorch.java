@@ -40,6 +40,10 @@ public class BugTorch {
 
 	@Mod.EventHandler
 	public void construct(FMLConstructionEvent event) {
+		String configFolder = Loader.instance().getConfigDir().getAbsolutePath() + File.separator + MODID + File.separator;
+		BugTorchConfig.loadBaseConfig(new File(configFolder + "base.cfg"));
+		BugTorchConfig.loadModdedConfig(new File(configFolder + "modSupport.cfg"));
+
 		if(!FMLCommonHandler.instance().getSide().isClient()) return;
 
 		try {
@@ -53,9 +57,6 @@ public class BugTorch {
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		String configFolder = event.getModConfigurationDirectory().getAbsolutePath() + File.separator + MODID + File.separator;
-		BugTorchConfig.loadBaseConfig(new File(configFolder + "base.cfg"));
-		BugTorchConfig.loadModdedConfig(new File(configFolder + "modSupport.cfg"));
 
 		VanillaSupport.enableSupport();
 
