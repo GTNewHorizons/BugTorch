@@ -1,6 +1,10 @@
 package jss.bugtorch.modsupport;
 
 import jss.bugtorch.config.BugTorchConfig;
+import jss.bugtorch.features.extraVanilla.onMobSaySilenser;
+import jss.bugtorch.features.extraVanilla.onPlayerHit;
+import jss.bugtorch.features.extraVanilla.onPlayerToss;
+import jss.bugtorch.features.extraVanilla.onThunderSound;
 import jss.bugtorch.features.squidFix.FixSquidSound;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTrapDoor;
@@ -47,10 +51,38 @@ public class VanillaSupport {
 			Blocks.torch.setTickRandomly(false);
 		}
 
-		// Squids
-		if (BugTorchConfig.addSquidsSounds && BugTorchConfig.txLoaderPresent) {
-			MinecraftForge.EVENT_BUS.register(new FixSquidSound());
+
+
+		if(BugTorchConfig.mobSaySoundDelay>0){
+			MinecraftForge.EVENT_BUS.register(new onMobSaySilenser());
 		}
+
+		if(BugTorchConfig.fixThunderSoundVolume){
+			MinecraftForge.EVENT_BUS.register(new onThunderSound());
+		}
+
+		//REQ TX Loader
+		if(BugTorchConfig.txLoaderPresent){
+
+			// Squids
+			if (BugTorchConfig.addSquidsSounds) {
+				MinecraftForge.EVENT_BUS.register(new FixSquidSound());
+			}
+
+			if(BugTorchConfig.addHitSound ){
+				MinecraftForge.EVENT_BUS.register(new onPlayerHit());
+			}
+
+			if(BugTorchConfig.addTossAnimation){
+				MinecraftForge.EVENT_BUS.register(new onPlayerToss());
+			}
+
+		}
+
+
+
+
+
 	}
 
 }

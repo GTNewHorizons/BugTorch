@@ -26,6 +26,50 @@ public class AssetLoader {
                     "sounds/entity/squid/squirt2.ogg",
                     "sounds/entity/squid/squirt3.ogg");
         }
+
+
+        if(BugTorchConfig.addTossAnimation && !BugTorchConfig.addHitSound){
+            //Toss sounds Only
+            addAssets(
+                    "sounds/entity/player/attack/weak1.ogg",
+                    "sounds/entity/player/attack/weak3.ogg");
+
+        }
+
+        if(BugTorchConfig.addHitSound){
+            addAssets(
+
+                    //weak
+
+                    "sounds/entity/player/attack/weak1.ogg",
+                    "sounds/entity/player/attack/weak2.ogg",
+                    "sounds/entity/player/attack/weak3.ogg",
+                    "sounds/entity/player/attack/weak4.ogg",
+                    //knockback
+
+                    "sounds/entity/player/attack/knockback1.ogg",
+                    "sounds/entity/player/attack/knockback2.ogg",
+                    "sounds/entity/player/attack/knockback3.ogg",
+                    "sounds/entity/player/attack/knockback4.ogg",
+                    //strong
+
+                    "sounds/entity/player/attack/strong1.ogg",
+                    "sounds/entity/player/attack/strong2.ogg",
+                    "sounds/entity/player/attack/strong3.ogg",
+                    "sounds/entity/player/attack/strong4.ogg",
+                    "sounds/entity/player/attack/strong5.ogg",
+                    "sounds/entity/player/attack/strong6.ogg",
+                    //crit
+
+                    "sounds/entity/player/attack/crit1.ogg",
+                    "sounds/entity/player/attack/crit2.ogg",
+                    "sounds/entity/player/attack/crit3.ogg"
+
+
+
+            );
+        }
+
     }
 
     private static void addAssets(String... resourcePaths) {

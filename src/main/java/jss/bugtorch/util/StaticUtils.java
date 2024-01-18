@@ -5,12 +5,17 @@ import java.util.Random;
 import jss.bugtorch.BugTorch;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.network.play.server.S0BPacketAnimation;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
 public class StaticUtils {
+
+    public static Random random = new Random();
+
+
 
     public static boolean getRandom(Entity e, double chanceMul) {
         return ((e.worldObj.rand.nextDouble() * 100d) < chanceMul);
@@ -61,5 +66,32 @@ public class StaticUtils {
         if (w instanceof WorldServer) {
             ((WorldServer) w).func_147487_a(name, pos.xCoord, pos.yCoord, pos.zCoord, count, 0, 0, 0, power);
         }
+    }
+
+
+    public static void swingHand(EntityLivingBase e) {
+        if (e.worldObj instanceof WorldServer) {
+            ((WorldServer) e.worldObj).getEntityTracker().func_151248_b(e, new S0BPacketAnimation(e, 0));
+        }
+    }
+
+
+    public static void playSoundAt(String soundName, Entity entt, float volume, float maxSpeed) {
+        playSoundAt(soundName, entt, volume, 0.5f, maxSpeed);
+
+    }
+
+    public static void playSoundAt(String soundName, Entity entt, float volume, float maxSpeed, float minSpeed) {
+        entt.worldObj.playSoundAtEntity(entt, soundName, volume, (float) ((Math.random() * maxSpeed) + minSpeed));
+
+    }
+
+    public static void playSoundEffect(World w, String soundName, double x, double y, double z, float volume, float speed) {
+        w.playSoundEffect(x, y, z, soundName, volume, speed);
+    }
+
+
+    public static float getFloatRnd() {
+        return random.nextFloat();
     }
 }

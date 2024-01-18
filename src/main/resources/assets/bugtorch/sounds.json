@@ -39,5 +39,48 @@
          "entity/squid/squirt2",
          "entity/squid/squirt3"
       ]
-   }
+   },
+   "HitWea":{
+   "category":"player",
+   "sounds":[
+      "entity/player/attack/weak1",
+	  "entity/player/attack/weak2",
+	  "entity/player/attack/weak3",
+      "entity/player/attack/weak4"
+   ]
+},
+   "HitStr":{
+   "category":"player",
+   "sounds":[
+      "entity/player/attack/strong1",
+      "entity/player/attack/strong2",
+	  "entity/player/attack/strong3",
+	  "entity/player/attack/strong4.",
+	  "entity/player/attack/strong5",
+	  "entity/player/attack/strong6"
+   ]
+},
+   "HitCri":{
+   "category":"player",
+   "sounds":[
+	  "entity/player/attack/crit1",
+	  "entity/player/attack/crit2",
+	  "entity/player/attack/crit3"
+   ]
+},"HitKno":{
+   "category":"player",
+   "sounds":[
+    "entity/player/attack/knockback1",
+	"entity/player/attack/knockback2",
+	"entity/player/attack/knockback3",
+	"entity/player/attack/knockback4"
+   ]
+},
+  "PToss":{
+  "category":"player",
+  "sounds":[
+    "entity/player/attack/weak1",
+    "entity/player/attack/weak3"
+  ]
+}
 }
