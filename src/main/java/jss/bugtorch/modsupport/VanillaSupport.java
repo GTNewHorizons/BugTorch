@@ -1,5 +1,7 @@
 package jss.bugtorch.modsupport;
 
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.relauncher.Side;
 import jss.bugtorch.config.BugTorchConfig;
 import jss.bugtorch.features.extraVanilla.onMobSaySilenser;
 import jss.bugtorch.features.extraVanilla.onPlayerHit;
@@ -13,7 +15,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class VanillaSupport {
 
-	public static void enableSupport() {
+	public static void enableSupport(FMLPreInitializationEvent event) {
 		//Backports
 		if(BugTorchConfig.enableFloatingTrapDoors) {
 			BlockTrapDoor.disableValidation = true;
@@ -57,7 +59,9 @@ public class VanillaSupport {
 			MinecraftForge.EVENT_BUS.register(new onMobSaySilenser());
 		}
 
-		if(BugTorchConfig.fixThunderSoundVolume){
+
+		//Client only
+		if(BugTorchConfig.fixThunderSoundVolume && event.getSide()== Side.CLIENT){
 			MinecraftForge.EVENT_BUS.register(new onThunderSound());
 		}
 

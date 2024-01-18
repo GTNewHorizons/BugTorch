@@ -58,7 +58,7 @@ public class BugTorch {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 
-		VanillaSupport.enableSupport();
+		VanillaSupport.enableSupport(event);
 
 		if(event.getSide() == Side.CLIENT) {
 			if(BugTorchConfig.removeBroadcastSettingsButton) {
