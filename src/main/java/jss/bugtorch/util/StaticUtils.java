@@ -2,7 +2,7 @@ package jss.bugtorch.util;
 
 import java.util.List;
 import java.util.Random;
-import jss.bugtorch.BugTorch;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.network.play.server.S0BPacketAnimation;
@@ -11,11 +11,11 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
+import jss.bugtorch.BugTorch;
+
 public class StaticUtils {
 
     public static Random random = new Random();
-
-
 
     public static boolean getRandom(Entity e, double chanceMul) {
         return ((e.worldObj.rand.nextDouble() * 100d) < chanceMul);
@@ -68,13 +68,11 @@ public class StaticUtils {
         }
     }
 
-
     public static void swingHand(EntityLivingBase e) {
         if (e.worldObj instanceof WorldServer) {
             ((WorldServer) e.worldObj).getEntityTracker().func_151248_b(e, new S0BPacketAnimation(e, 0));
         }
     }
-
 
     public static void playSoundAt(String soundName, Entity entt, float volume, float maxSpeed) {
         playSoundAt(soundName, entt, volume, 0.5f, maxSpeed);
@@ -86,10 +84,10 @@ public class StaticUtils {
 
     }
 
-    public static void playSoundEffect(World w, String soundName, double x, double y, double z, float volume, float speed) {
+    public static void playSoundEffect(World w, String soundName, double x, double y, double z, float volume,
+            float speed) {
         w.playSoundEffect(x, y, z, soundName, volume, speed);
     }
-
 
     public static float getFloatRnd() {
         return random.nextFloat();

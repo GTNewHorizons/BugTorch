@@ -1,6 +1,7 @@
 package jss.bugtorch.util;
 
 public class JCHDelayer {
+
     long last;
     long delay;
 

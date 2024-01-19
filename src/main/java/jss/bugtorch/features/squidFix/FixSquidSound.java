@@ -1,9 +1,8 @@
 package jss.bugtorch.features.squidFix;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import java.util.List;
 import java.util.Random;
-import jss.bugtorch.util.StaticUtils;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.potion.Potion;
@@ -15,6 +14,9 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import jss.bugtorch.util.StaticUtils;
 
 public class FixSquidSound {
 

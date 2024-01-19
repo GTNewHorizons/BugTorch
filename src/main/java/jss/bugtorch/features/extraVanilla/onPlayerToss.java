@@ -1,12 +1,12 @@
 package jss.bugtorch.features.extraVanilla;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import jss.bugtorch.BugTorch;
 import jss.bugtorch.util.JCHDelayer;
 import jss.bugtorch.util.StaticUtils;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.event.entity.item.ItemTossEvent;
 
 public class onPlayerToss {
 

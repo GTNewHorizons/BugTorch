@@ -27,31 +27,28 @@ public class AssetLoader {
                     "sounds/entity/squid/squirt3.ogg");
         }
 
-
-        if(BugTorchConfig.addTossAnimation && !BugTorchConfig.addHitSound){
-            //Toss sounds Only
-            addAssets(
-                    "sounds/entity/player/attack/weak1.ogg",
-                    "sounds/entity/player/attack/weak3.ogg");
+        if (BugTorchConfig.addTossAnimation && !BugTorchConfig.addHitSound) {
+            // Toss sounds Only
+            addAssets("sounds/entity/player/attack/weak1.ogg", "sounds/entity/player/attack/weak3.ogg");
 
         }
 
-        if(BugTorchConfig.addHitSound){
+        if (BugTorchConfig.addHitSound) {
             addAssets(
 
-                    //weak
+                    // weak
 
                     "sounds/entity/player/attack/weak1.ogg",
                     "sounds/entity/player/attack/weak2.ogg",
                     "sounds/entity/player/attack/weak3.ogg",
                     "sounds/entity/player/attack/weak4.ogg",
-                    //knockback
+                    // knockback
 
                     "sounds/entity/player/attack/knockback1.ogg",
                     "sounds/entity/player/attack/knockback2.ogg",
                     "sounds/entity/player/attack/knockback3.ogg",
                     "sounds/entity/player/attack/knockback4.ogg",
-                    //strong
+                    // strong
 
                     "sounds/entity/player/attack/strong1.ogg",
                     "sounds/entity/player/attack/strong2.ogg",
@@ -59,13 +56,11 @@ public class AssetLoader {
                     "sounds/entity/player/attack/strong4.ogg",
                     "sounds/entity/player/attack/strong5.ogg",
                     "sounds/entity/player/attack/strong6.ogg",
-                    //crit
+                    // crit
 
                     "sounds/entity/player/attack/crit1.ogg",
                     "sounds/entity/player/attack/crit2.ogg",
                     "sounds/entity/player/attack/crit3.ogg"
-
-
 
             );
         }
@@ -74,9 +69,7 @@ public class AssetLoader {
 
     private static void addAssets(String... resourcePaths) {
         for (String path : resourcePaths) {
-            TXLoaderCore.getAssetBuilder("minecraft/" + path)
-                    .setOverride("bugtorch/" + path)
-                    .setVersion("1.19.2")
+            TXLoaderCore.getAssetBuilder("minecraft/" + path).setOverride("bugtorch/" + path).setVersion("1.19.2")
                     .add();
         }
     }
