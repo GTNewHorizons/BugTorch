@@ -1,8 +1,9 @@
 package jss.bugtorch.mixins.late.crayfishfurniture.fix;
 
-import com.mrcrayfish.furniture.tileentity.TileEntityWashingMachine;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+
+import com.mrcrayfish.furniture.tileentity.TileEntityWashingMachine;
 
 @Mixin(value = TileEntityWashingMachine.class)
 public abstract class MixinTileEntityWashingMachine {
@@ -13,7 +14,7 @@ public abstract class MixinTileEntityWashingMachine {
      */
     @Overwrite
     public int[] getAccessibleSlotsFromSide(int side) {
-        return new int[]{};
+        return new int[] {};
     }
 
 }

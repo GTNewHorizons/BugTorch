@@ -1,15 +1,15 @@
 package jss.bugtorch.mixins.late.llibrary.fix;
 
+import java.util.List;
+
 import net.ilexiconn.llibrary.server.util.WebUtils;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
-import java.util.List;
-
 @Mixin(value = WebUtils.class, remap = false)
 public abstract class MixinWebUtils {
-
 
     /**
      * @author jss2a98aj

@@ -1,9 +1,11 @@
 package jss.bugtorch.mixins.late.crayfishfurniture.tweak;
 
-import com.mrcrayfish.furniture.FurnitureAchievements;
 import net.minecraft.entity.player.EntityPlayer;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+
+import com.mrcrayfish.furniture.FurnitureAchievements;
 
 @Mixin(value = FurnitureAchievements.class)
 public abstract class MixinFurnitureAchievements {

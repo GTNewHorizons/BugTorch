@@ -1,11 +1,13 @@
 package jss.bugtorch.mixins.early.minecraft.fastrandom;
 
-import jss.util.RandomXoshiro256StarStar;
+import java.util.Random;
+
 import net.minecraft.block.BlockHopper;
+
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 
-import java.util.Random;
+import jss.util.RandomXoshiro256StarStar;
 
 @Mixin(value = BlockHopper.class)
 public abstract class MixinBlockHopper {

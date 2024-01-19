@@ -1,14 +1,15 @@
 package jss.bugtorch.mixinplugin;
 
-import com.gtnewhorizon.gtnhmixins.ILateMixinLoader;
-import com.gtnewhorizon.gtnhmixins.LateMixin;
-import cpw.mods.fml.relauncher.FMLLaunchHandler;
-import jss.bugtorch.BugTorch;
-import jss.bugtorch.config.BugTorchConfig;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import com.gtnewhorizon.gtnhmixins.ILateMixinLoader;
+import com.gtnewhorizon.gtnhmixins.LateMixin;
+
+import cpw.mods.fml.relauncher.FMLLaunchHandler;
+import jss.bugtorch.BugTorch;
+import jss.bugtorch.config.BugTorchConfig;
 
 @LateMixin
 public class BugTorchLateMixins implements ILateMixinLoader {
@@ -50,7 +51,7 @@ public class BugTorchLateMixins implements ILateMixinLoader {
         boolean client = FMLLaunchHandler.side().isClient();
         List<String> mixins = new ArrayList<>();
 
-        //Mod bugfixes
+        // Mod bugfixes
         if (BugTorchConfig.fixCrayfishFurnitureNullPointerException) {
             mixins.add("crayfishfurniture.fix.MixinTileEntityDishwasher");
             mixins.add("crayfishfurniture.fix.MixinTileEntityMicrowave");
@@ -78,11 +79,11 @@ public class BugTorchLateMixins implements ILateMixinLoader {
             mixins.add("aetherii.optimization.MixinClientEventHandler");
         }
 
-        //Mod tweaks
-        if(BugTorchConfig.disableCrayfishFurnitureAchievements) {
+        // Mod tweaks
+        if (BugTorchConfig.disableCrayfishFurnitureAchievements) {
             mixins.add("crayfishfurniture.tweak.MixinFurnitureAchievements");
         }
-        if(BugTorchConfig.proxyLLibraryPastebin) {
+        if (BugTorchConfig.proxyLLibraryPastebin) {
             mixins.add("llibrary.fix.MixinWebUtils");
         }
 

@@ -18,13 +18,13 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 public abstract class MixinNioSocketChannel extends AbstractNioByteChannel {
 
     MixinNioSocketChannel(Channel parent, SelectableChannel ch) {
-		super(parent, ch);
-	}
+        super(parent, ch);
+    }
 
-	/**
-	 * @author C0bra5
-	 * @reason Fixes Netty causing excessive log spam and a resource leak when a connection is improperly terminated.
-	 */
+    /**
+     * @author C0bra5
+     * @reason Fixes Netty causing excessive log spam and a resource leak when a connection is improperly terminated.
+     */
     @Overwrite
     protected void doWrite(ChannelOutboundBuffer in) throws Exception {
         for (;;) {
@@ -45,16 +45,16 @@ public abstract class MixinNioSocketChannel extends AbstractNioByteChannel {
             int nioBufferCnt = in.nioBufferCount();
             long expectedWrittenBytes = in.nioBufferSize();
 
-            final SocketChannel ch = (SocketChannel)javaChannel();
+            final SocketChannel ch = (SocketChannel) javaChannel();
             long writtenBytes = 0;
             boolean done = false;
-            for (int i = config().getWriteSpinCount() - 1; i >= 0; i --) {
-            	long localWrittenBytes = 0l;
-            	try {
-            		localWrittenBytes = ch.write(nioBuffers, 0, nioBufferCnt);
-            	} catch(IOException ex) {
-            		close();
-            	}
+            for (int i = config().getWriteSpinCount() - 1; i >= 0; i--) {
+                long localWrittenBytes = 0l;
+                try {
+                    localWrittenBytes = ch.write(nioBuffers, 0, nioBufferCnt);
+                } catch (IOException ex) {
+                    close();
+                }
 
                 if (localWrittenBytes == 0) {
                     break;
@@ -69,7 +69,7 @@ public abstract class MixinNioSocketChannel extends AbstractNioByteChannel {
 
             if (done) {
                 // Release all buffers
-                for (int i = msgCount; i > 0; i --) {
+                for (int i = msgCount; i > 0; i--) {
                     in.remove();
                 }
 
@@ -82,7 +82,7 @@ public abstract class MixinNioSocketChannel extends AbstractNioByteChannel {
                 // Did not write all buffers completely.
                 // Release the fully written buffers and update the indexes of the partially written buffer.
 
-                for (int i = msgCount; i > 0; i --) {
+                for (int i = msgCount; i > 0; i--) {
                     final ByteBuf buf = (ByteBuf) in.current();
                     final int readerIndex = buf.readerIndex();
                     final int readableBytes = buf.writerIndex() - readerIndex;
