@@ -1,13 +1,15 @@
 package jss.bugtorch.mixins.late.witchery.shearing;
 
-import com.emoniph.witchery.blocks.BlockWitchLeaves;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemShears;
 import net.minecraft.world.World;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+
+import com.emoniph.witchery.blocks.BlockWitchLeaves;
 
 @Mixin(value = BlockWitchLeaves.class, remap = false)
 public abstract class MixinBlockWitchLeaves extends BlockLeavesBase {

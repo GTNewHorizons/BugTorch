@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.EnumDifficulty;
+
 import org.lwjgl.opengl.Display;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -18,7 +19,7 @@ public abstract class MixinFasterSetOptions {
      */
     @Overwrite
     public void setOptionFloatValue(GameSettings.Options option, float value) {
-        switch(option) {
+        switch (option) {
             case SENSITIVITY:
                 mouseSensitivity = value;
                 break;
@@ -94,7 +95,7 @@ public abstract class MixinFasterSetOptions {
      */
     @Overwrite
     public void setOptionValue(GameSettings.Options option, int value) {
-        switch(option) {
+        switch (option) {
             case INVERT_MOUSE:
                 invertMouse = !invertMouse;
                 break;
@@ -122,7 +123,7 @@ public abstract class MixinFasterSetOptions {
                 break;
             case ANAGLYPH:
                 anaglyph = !anaglyph;
-                //refreshResources was overkill.
+                // refreshResources was overkill.
                 mc.renderGlobal.loadRenderers();
                 break;
             case DIFFICULTY:
@@ -137,7 +138,8 @@ public abstract class MixinFasterSetOptions {
                 mc.renderGlobal.loadRenderers();
                 break;
             case CHAT_VISIBILITY:
-                chatVisibility = EntityPlayer.EnumChatVisibility.getEnumChatVisibility((chatVisibility.getChatVisibility() + value) % 3);
+                chatVisibility = EntityPlayer.EnumChatVisibility
+                        .getEnumChatVisibility((chatVisibility.getChatVisibility() + value) % 3);
                 break;
             case STREAM_COMPRESSION:
                 field_152405_O = (field_152405_O + value) % 3;
@@ -192,53 +194,96 @@ public abstract class MixinFasterSetOptions {
      */
 
     @Shadow
-    public void saveOptions() {
-    }
+    public void saveOptions() {}
 
-    @Shadow protected Minecraft mc;
+    @Shadow
+    protected Minecraft mc;
 
-    @Shadow public float mouseSensitivity;
-    @Shadow public boolean invertMouse;
-    @Shadow public float fovSetting;
-    @Shadow public float gammaSetting;
-    @Shadow public int renderDistanceChunks;
-    @Shadow public int guiScale;
-    @Shadow public int particleSetting;
-    @Shadow public boolean viewBobbing;
-    @Shadow public boolean anaglyph;
-    @Shadow public boolean advancedOpengl;
-    @Shadow public int limitFramerate;
-    @Shadow public boolean fboEnable;
-    @Shadow public EnumDifficulty difficulty;
-    @Shadow public boolean fancyGraphics;
-    @Shadow public int ambientOcclusion;
-    @Shadow public boolean clouds;
-    @Shadow public EntityPlayer.EnumChatVisibility chatVisibility;
-    @Shadow public boolean chatColours;
-    @Shadow public boolean chatLinks;
-    @Shadow public boolean chatLinksPrompt;
-    @Shadow public float chatOpacity;
-    @Shadow public boolean snooperEnabled;
-    @Shadow public boolean fullScreen;
-    @Shadow public boolean enableVsync;
-    @Shadow public boolean showCape;
-    @Shadow public boolean touchscreen;
-    @Shadow public float chatHeightFocused;
-    @Shadow public float chatHeightUnfocused;
-    @Shadow public float chatScale;
-    @Shadow public float chatWidth;
-    @Shadow public int mipmapLevels;
-    @Shadow public int anisotropicFiltering;
-    @Shadow public float field_152400_J;
-    @Shadow public float field_152401_K;
-    @Shadow public float field_152402_L;
-    @Shadow public float field_152403_M;
-    @Shadow public float field_152404_N;
-    @Shadow public int field_152405_O;
-    @Shadow public boolean field_152406_P;
-    @Shadow public int field_152408_R;
-    @Shadow public int field_152409_S;
-    @Shadow public int field_152410_T;
-    @Shadow public boolean forceUnicodeFont;
+    @Shadow
+    public float mouseSensitivity;
+    @Shadow
+    public boolean invertMouse;
+    @Shadow
+    public float fovSetting;
+    @Shadow
+    public float gammaSetting;
+    @Shadow
+    public int renderDistanceChunks;
+    @Shadow
+    public int guiScale;
+    @Shadow
+    public int particleSetting;
+    @Shadow
+    public boolean viewBobbing;
+    @Shadow
+    public boolean anaglyph;
+    @Shadow
+    public boolean advancedOpengl;
+    @Shadow
+    public int limitFramerate;
+    @Shadow
+    public boolean fboEnable;
+    @Shadow
+    public EnumDifficulty difficulty;
+    @Shadow
+    public boolean fancyGraphics;
+    @Shadow
+    public int ambientOcclusion;
+    @Shadow
+    public boolean clouds;
+    @Shadow
+    public EntityPlayer.EnumChatVisibility chatVisibility;
+    @Shadow
+    public boolean chatColours;
+    @Shadow
+    public boolean chatLinks;
+    @Shadow
+    public boolean chatLinksPrompt;
+    @Shadow
+    public float chatOpacity;
+    @Shadow
+    public boolean snooperEnabled;
+    @Shadow
+    public boolean fullScreen;
+    @Shadow
+    public boolean enableVsync;
+    @Shadow
+    public boolean showCape;
+    @Shadow
+    public boolean touchscreen;
+    @Shadow
+    public float chatHeightFocused;
+    @Shadow
+    public float chatHeightUnfocused;
+    @Shadow
+    public float chatScale;
+    @Shadow
+    public float chatWidth;
+    @Shadow
+    public int mipmapLevels;
+    @Shadow
+    public int anisotropicFiltering;
+    @Shadow
+    public float field_152400_J;
+    @Shadow
+    public float field_152401_K;
+    @Shadow
+    public float field_152402_L;
+    @Shadow
+    public float field_152403_M;
+    @Shadow
+    public float field_152404_N;
+    @Shadow
+    public int field_152405_O;
+    @Shadow
+    public boolean field_152406_P;
+    @Shadow
+    public int field_152408_R;
+    @Shadow
+    public int field_152409_S;
+    @Shadow
+    public int field_152410_T;
+    @Shadow
+    public boolean forceUnicodeFont;
 
 }

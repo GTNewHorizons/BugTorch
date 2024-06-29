@@ -1,15 +1,17 @@
 package jss.bugtorch.mixins.early.minecraft.tweaks.entitylivingbase;
 
-import jss.bugtorch.config.BugTorchConfig;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+import jss.bugtorch.config.BugTorchConfig;
+
 @Mixin(value = EntityLivingBase.class)
-public abstract class MixinScalingSuffocationDamage  {
+public abstract class MixinScalingSuffocationDamage {
 
     /**
      * @author jss2a98aj
@@ -20,13 +22,13 @@ public abstract class MixinScalingSuffocationDamage  {
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/EntityLivingBase;attackEntityFrom(Lnet/minecraft/util/DamageSource;F)Z",
-                    ordinal = 0
-            )
-    )
+                    ordinal = 0))
     private boolean bugTorch$scalingSuffocationDamage(EntityLivingBase entity, DamageSource source, float damage) {
-        return entity.attackEntityFrom(source,
+        return entity.attackEntityFrom(
+                source,
                 (entity instanceof EntityPlayer)
-                        ? BugTorchConfig.scaledSuffocationDamageMaxHealthMult * entity.getMaxHealth() + BugTorchConfig.scaledSuffocationDamageMaxHealthFlat
+                        ? BugTorchConfig.scaledSuffocationDamageMaxHealthMult * entity.getMaxHealth()
+                                + BugTorchConfig.scaledSuffocationDamageMaxHealthFlat
                         : damage);
     }
 

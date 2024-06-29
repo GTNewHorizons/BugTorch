@@ -1,18 +1,5 @@
 package jss.bugtorch.mixins.early.minecraft.optimization.gamesettings;
 
-import com.google.gson.Gson;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.SoundCategory;
-import net.minecraft.client.settings.GameSettings;
-import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.world.EnumDifficulty;
-import org.apache.logging.log4j.Logger;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -20,6 +7,21 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.SoundCategory;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.EnumDifficulty;
+
+import org.apache.logging.log4j.Logger;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
+
+import com.google.gson.Gson;
 
 @Mixin(value = GameSettings.class, priority = 990)
 public abstract class MixinFasterLoadOptions {
@@ -31,7 +33,7 @@ public abstract class MixinFasterLoadOptions {
     @Overwrite
     public void loadOptions() {
         try {
-            if(!optionsFile.exists()) {
+            if (!optionsFile.exists()) {
                 return;
             }
 
@@ -39,20 +41,20 @@ public abstract class MixinFasterLoadOptions {
             String optionsEntry;
             mapSoundLevels.clear();
 
-            while((optionsEntry = bufferedreader.readLine()) != null) {
+            while ((optionsEntry = bufferedreader.readLine()) != null) {
                 try {
                     String[] splitEntry = optionsEntry.split(":");
 
-                    if(splitEntry[0].startsWith("key_")) {
-                        for(KeyBinding keybinding : keyBindings) {
+                    if (splitEntry[0].startsWith("key_")) {
+                        for (KeyBinding keybinding : keyBindings) {
                             if (splitEntry[0].equals("key_" + keybinding.getKeyDescription())) {
                                 keybinding.setKeyCode(Integer.parseInt(splitEntry[1]));
                                 break;
                             }
                         }
-                    } else if(splitEntry[0].startsWith("soundCategory_")) {
+                    } else if (splitEntry[0].startsWith("soundCategory_")) {
                         SoundCategory[] soundCategories = SoundCategory.values();
-                        for(SoundCategory soundcategory : soundCategories) {
+                        for (SoundCategory soundcategory : soundCategories) {
                             if (splitEntry[0].equals("soundCategory_" + soundcategory.getCategoryName())) {
                                 mapSoundLevels.put(soundcategory, parseFloat(splitEntry[1]));
                                 break;
@@ -118,7 +120,8 @@ public abstract class MixinFasterLoadOptions {
                                 clouds = splitEntry[1].equals("true");
                                 break;
                             case "resourcePacks":
-                                resourcePacks = gson.fromJson(optionsEntry.substring(optionsEntry.indexOf(58) + 1), typeListString);
+                                resourcePacks = gson
+                                        .fromJson(optionsEntry.substring(optionsEntry.indexOf(58) + 1), typeListString);
                                 if (resourcePacks == null) {
                                     resourcePacks = new ArrayList();
                                 }
@@ -130,7 +133,8 @@ public abstract class MixinFasterLoadOptions {
                                 language = splitEntry[1];
                                 break;
                             case "chatVisibility":
-                                chatVisibility = EntityPlayer.EnumChatVisibility.getEnumChatVisibility(Integer.parseInt(splitEntry[1]));
+                                chatVisibility = EntityPlayer.EnumChatVisibility
+                                        .getEnumChatVisibility(Integer.parseInt(splitEntry[1]));
                                 break;
                             case "chatColors":
                                 chatColours = splitEntry[1].equals("true");
@@ -253,72 +257,134 @@ public abstract class MixinFasterLoadOptions {
         return 0f;
     }
 
-    @Shadow @Final
+    @Shadow
+    @Final
     private static Logger logger;
-    @Shadow @Final
+    @Shadow
+    @Final
     private static Gson gson;
-    @Shadow @Final
+    @Shadow
+    @Final
     private static ParameterizedType typeListString;
 
-    @Shadow protected Minecraft mc;
-    @Shadow private Map mapSoundLevels;
-    @Shadow private File optionsFile;
+    @Shadow
+    protected Minecraft mc;
+    @Shadow
+    private Map mapSoundLevels;
+    @Shadow
+    private File optionsFile;
 
-    @Shadow public KeyBinding[] keyBindings;
-    @Shadow public float mouseSensitivity;
-    @Shadow public boolean invertMouse;
-    @Shadow public float fovSetting;
-    @Shadow public float gammaSetting;
-    @Shadow public float saturation;
-    @Shadow public int renderDistanceChunks;
-    @Shadow public int guiScale;
-    @Shadow public int particleSetting;
-    @Shadow public boolean viewBobbing;
-    @Shadow public boolean anaglyph;
-    @Shadow public boolean advancedOpengl;
-    @Shadow public int limitFramerate;
-    @Shadow public boolean fboEnable;
-    @Shadow public EnumDifficulty difficulty;
-    @Shadow public boolean fancyGraphics;
-    @Shadow public int ambientOcclusion;
-    @Shadow public boolean clouds;
-    @Shadow public List resourcePacks;
-    @Shadow public String lastServer;
-    @Shadow public String language;
-    @Shadow public EntityPlayer.EnumChatVisibility chatVisibility;
-    @Shadow public boolean chatColours;
-    @Shadow public boolean chatLinks;
-    @Shadow public boolean chatLinksPrompt;
-    @Shadow public float chatOpacity;
-    @Shadow public boolean snooperEnabled;
-    @Shadow public boolean fullScreen;
-    @Shadow public boolean enableVsync;
-    @Shadow public boolean hideServerAddress;
-    @Shadow public boolean advancedItemTooltips;
-    @Shadow public boolean pauseOnLostFocus;
-    @Shadow public boolean showCape;
-    @Shadow public boolean touchscreen;
-    @Shadow public int overrideHeight;
-    @Shadow public int overrideWidth;
-    @Shadow public boolean heldItemTooltips;
-    @Shadow public float chatHeightFocused;
-    @Shadow public float chatHeightUnfocused;
-    @Shadow public float chatScale;
-    @Shadow public float chatWidth;
-    @Shadow public boolean showInventoryAchievementHint;
-    @Shadow public int mipmapLevels;
-    @Shadow public int anisotropicFiltering;
-    @Shadow public float field_152400_J;
-    @Shadow public float field_152401_K;
-    @Shadow public float field_152402_L;
-    @Shadow public float field_152403_M;
-    @Shadow public float field_152404_N;
-    @Shadow public int field_152405_O;
-    @Shadow public boolean field_152406_P;
-    @Shadow public String field_152407_Q;
-    @Shadow public int field_152408_R;
-    @Shadow public int field_152409_S;
-    @Shadow public int field_152410_T;
-    @Shadow public boolean forceUnicodeFont;
+    @Shadow
+    public KeyBinding[] keyBindings;
+    @Shadow
+    public float mouseSensitivity;
+    @Shadow
+    public boolean invertMouse;
+    @Shadow
+    public float fovSetting;
+    @Shadow
+    public float gammaSetting;
+    @Shadow
+    public float saturation;
+    @Shadow
+    public int renderDistanceChunks;
+    @Shadow
+    public int guiScale;
+    @Shadow
+    public int particleSetting;
+    @Shadow
+    public boolean viewBobbing;
+    @Shadow
+    public boolean anaglyph;
+    @Shadow
+    public boolean advancedOpengl;
+    @Shadow
+    public int limitFramerate;
+    @Shadow
+    public boolean fboEnable;
+    @Shadow
+    public EnumDifficulty difficulty;
+    @Shadow
+    public boolean fancyGraphics;
+    @Shadow
+    public int ambientOcclusion;
+    @Shadow
+    public boolean clouds;
+    @Shadow
+    public List resourcePacks;
+    @Shadow
+    public String lastServer;
+    @Shadow
+    public String language;
+    @Shadow
+    public EntityPlayer.EnumChatVisibility chatVisibility;
+    @Shadow
+    public boolean chatColours;
+    @Shadow
+    public boolean chatLinks;
+    @Shadow
+    public boolean chatLinksPrompt;
+    @Shadow
+    public float chatOpacity;
+    @Shadow
+    public boolean snooperEnabled;
+    @Shadow
+    public boolean fullScreen;
+    @Shadow
+    public boolean enableVsync;
+    @Shadow
+    public boolean hideServerAddress;
+    @Shadow
+    public boolean advancedItemTooltips;
+    @Shadow
+    public boolean pauseOnLostFocus;
+    @Shadow
+    public boolean showCape;
+    @Shadow
+    public boolean touchscreen;
+    @Shadow
+    public int overrideHeight;
+    @Shadow
+    public int overrideWidth;
+    @Shadow
+    public boolean heldItemTooltips;
+    @Shadow
+    public float chatHeightFocused;
+    @Shadow
+    public float chatHeightUnfocused;
+    @Shadow
+    public float chatScale;
+    @Shadow
+    public float chatWidth;
+    @Shadow
+    public boolean showInventoryAchievementHint;
+    @Shadow
+    public int mipmapLevels;
+    @Shadow
+    public int anisotropicFiltering;
+    @Shadow
+    public float field_152400_J;
+    @Shadow
+    public float field_152401_K;
+    @Shadow
+    public float field_152402_L;
+    @Shadow
+    public float field_152403_M;
+    @Shadow
+    public float field_152404_N;
+    @Shadow
+    public int field_152405_O;
+    @Shadow
+    public boolean field_152406_P;
+    @Shadow
+    public String field_152407_Q;
+    @Shadow
+    public int field_152408_R;
+    @Shadow
+    public int field_152409_S;
+    @Shadow
+    public int field_152410_T;
+    @Shadow
+    public boolean forceUnicodeFont;
 
 }

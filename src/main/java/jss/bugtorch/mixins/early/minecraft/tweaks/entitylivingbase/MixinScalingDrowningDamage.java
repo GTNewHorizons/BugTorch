@@ -1,12 +1,14 @@
 package jss.bugtorch.mixins.early.minecraft.tweaks.entitylivingbase;
 
-import jss.bugtorch.config.BugTorchConfig;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+
+import jss.bugtorch.config.BugTorchConfig;
 
 @Mixin(value = EntityLivingBase.class)
 public abstract class MixinScalingDrowningDamage {
@@ -20,15 +22,14 @@ public abstract class MixinScalingDrowningDamage {
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/entity/EntityLivingBase;attackEntityFrom(Lnet/minecraft/util/DamageSource;F)Z",
-                    ordinal = 1
-            )
-    )
+                    ordinal = 1))
     private boolean bugTorch$scalingDrowningDamage(EntityLivingBase entity, DamageSource source, float damage) {
-        return entity.attackEntityFrom(source,
+        return entity.attackEntityFrom(
+                source,
                 (entity instanceof EntityPlayer)
-                        ? BugTorchConfig.scaledDrowningDamageMaxHealthMult * entity.getMaxHealth() + BugTorchConfig.scaledDrowningDamageMaxHealthFlat
-                        : damage
-        );
+                        ? BugTorchConfig.scaledDrowningDamageMaxHealthMult * entity.getMaxHealth()
+                                + BugTorchConfig.scaledDrowningDamageMaxHealthFlat
+                        : damage);
     }
 
 }

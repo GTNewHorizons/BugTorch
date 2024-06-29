@@ -1,8 +1,9 @@
 package jss.bugtorch.mixins.late.crayfishfurniture.fix;
 
-import com.mrcrayfish.furniture.tileentity.TileEntityMicrowave;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+
+import com.mrcrayfish.furniture.tileentity.TileEntityMicrowave;
 
 @Mixin(value = TileEntityMicrowave.class)
 public abstract class MixinTileEntityMicrowave {
@@ -13,7 +14,7 @@ public abstract class MixinTileEntityMicrowave {
      */
     @Overwrite
     public int[] getAccessibleSlotsFromSide(int side) {
-        return new int[]{};
+        return new int[] {};
     }
 
 }

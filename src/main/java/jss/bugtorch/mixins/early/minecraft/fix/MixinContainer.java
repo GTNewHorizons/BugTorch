@@ -1,13 +1,14 @@
 package jss.bugtorch.mixins.early.minecraft.fix;
 
+import java.util.List;
+
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-
-import java.util.List;
 
 @Mixin(value = Container.class)
 public abstract class MixinContainer {
@@ -25,26 +26,28 @@ public abstract class MixinContainer {
         Slot slot;
         ItemStack slotStack;
 
-        if(input.isStackable()) {
-            while(input.stackSize > 0 && (!reverse && index < length || reverse && index >= start)) {
-                slot = (Slot)inventorySlots.get(index);
+        if (input.isStackable()) {
+            while (input.stackSize > 0 && (!reverse && index < length || reverse && index >= start)) {
+                slot = (Slot) inventorySlots.get(index);
                 slotStack = slot.getStack();
 
-                if(slotStack != null) {
+                if (slotStack != null) {
                     int maxRemovableFromInput = Math.min(input.getMaxStackSize(), slot.getSlotStackLimit());
                     int removeFromInput = Math.min(maxRemovableFromInput, input.stackSize);
                     ItemStack partialStack = input.copy();
                     partialStack.stackSize = removeFromInput;
 
-                    if(slot.isItemValid(partialStack) && slotStack.getItem().equals(input.getItem()) && input.getItemDamage() == slotStack.getItemDamage() && ItemStack.areItemStackTagsEqual(input, slotStack)) {
+                    if (slot.isItemValid(partialStack) && slotStack.getItem().equals(input.getItem())
+                            && input.getItemDamage() == slotStack.getItemDamage()
+                            && ItemStack.areItemStackTagsEqual(input, slotStack)) {
                         int combinedStackSize = slotStack.stackSize + input.stackSize;
 
-                        if(combinedStackSize <= input.getMaxStackSize()) {
+                        if (combinedStackSize <= input.getMaxStackSize()) {
                             slotStack.stackSize = combinedStackSize;
                             slot.onSlotChanged();
                             input.stackSize = 0;
                             couldMerge = true;
-                        } else if(slotStack.stackSize < input.getMaxStackSize()) {
+                        } else if (slotStack.stackSize < input.getMaxStackSize()) {
                             removeFromInput = maxRemovableFromInput - slotStack.stackSize;
                             slotStack.stackSize = slotStack.getMaxStackSize();
                             slot.onSlotChanged();
@@ -59,16 +62,16 @@ public abstract class MixinContainer {
 
         index = reverse ? length - 1 : start;
 
-        while(input.stackSize > 0 && (!reverse && index < length || reverse && index >= start)) {
-            slot = (Slot)inventorySlots.get(index);
+        while (input.stackSize > 0 && (!reverse && index < length || reverse && index >= start)) {
+            slot = (Slot) inventorySlots.get(index);
             slotStack = slot.getStack();
 
-            if(slotStack == null) {
+            if (slotStack == null) {
                 int removeFromInput = Math.min(slot.getSlotStackLimit(), input.stackSize);
                 ItemStack partialStack = input.copy();
                 partialStack.stackSize = removeFromInput;
 
-                if(slot.isItemValid(partialStack)) {
+                if (slot.isItemValid(partialStack)) {
                     slot.putStack(partialStack);
                     slot.onSlotChanged();
                     input.stackSize -= removeFromInput;
